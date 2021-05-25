@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="RohatinAndrei">
+
+    <title>HUSE Login</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="/assets/css/main">
+</head>
+
+<body>
+
+    <div class="row no-gutter" style="height: 100vh;">
+        <div id="testimonial" class="col-md-7 col-lg-7 col-xl-7 bg-secondary no-gutter center-flex">
+            <div class="row center-flex">
+                <ul>
+                    <li class="center-flex"><img src="/assets/images/logo" /></li>
+                    <li class="center-flex" style="margin-top:100px"><p class="txt-accent-primary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In aliquam sapien elit, at tincidunt lacus ullamcorper nec. </p></li>
+                </ul>
+            </div>
+            <div class="row center-flex" style="position: absolute; bottom: 0; margin-bottom: 50px;"></div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5 bg-primary no-gutter center-flex">
+            <form id="login_form" style="width: 100%;">
+                <div class="row center-flex">
+                    <p class="txt-accent-secondary">Login to your account</p>
+                </div>
+                <div class="row center-flex">
+                    <input type="email" class="input-group" id="email" name="email" placeholder="enter email" required>
+                </div>
+                <div class="row center-flex">
+                    <input type="password" class="input-group" id="password" name="password" placeholder="enter password" required>
+                </div>
+                <div class="row center-flex">
+                    <details class="dropdown">
+                        <summary class="txt-accent-primary center-flex">Forgot password?</summary>
+                        <div class="dropdown-menu">
+                            <ul>
+                                <li><input type="password" class="input-group" id="forgot_password" placeholder="enter username" required></li>
+                                <li><input type="button" class="btn-primary bg-accent" value="Recover Password" id="btn_forgot_password" required></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+                <div class="row center-flex">
+                    <input type="submit" class="btn-primary bg-accent" value="Sign In" id="btn_login" required>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Firebase dependencies-->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyDQZUxFRt_rBpvWeNfql1FlGFZGdxGpUxU",
+            authDomain: "huse-1ad4c.firebaseapp.com",
+            databaseURL: "https://huse-1ad4c.firebaseio.com",
+            projectId: "huse-1ad4c",
+            storageBucket: "huse-1ad4c.appspot.com",
+            messagingSenderId: "767580133185",
+            appId: "1:767580133185:web:01faf383d658bc2720f3c0",
+            measurementId: "G-28NZB53LRW"
+        };
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const frAuth = firebase.auth();
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+    </script>
+
+    <script src="/assets/javascripts/jquery"></script>
+    <script src="/assets/javascripts/login"></script>
+
+</body>
+
+</html>

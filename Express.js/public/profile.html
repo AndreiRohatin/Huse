@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="RohatinAndrei">
+
+    <title>HUSE Dashboard</title>
+    
+    <!--CSS-->
+    <link rel="stylesheet" href="/assets/css/main">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet'/>
+    <!--JS-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+    <!-- /Preloader -->
+
+    <!--Sidenav-->
+    <div id="sidenav" class="sidenav bg-secondary">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/Main">Map View</a>
+        <a href="/Profile">Profile</a>
+        <a href="/Clients">Clients</a>
+        <a href="/api/logoutUser">Sign out</a>
+    </div>
+    <span class="txt-accent-primary" style="font-size:40px;cursor:pointer;position:fixed;z-index:1;margin:20px" onclick="openNav()"><strong>&#9776;</strong></span>
+    <!--End Sidenav-->
+    <!--Main Content-->
+    <div class="main bg-primary txt-accent-primary">
+        <div class="row no-gutter">
+            <!--Profile & Social Card-->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <!--Profile Card-->
+                <div class="row">
+                    <div class="card bg-secondary">
+                        <img id="profile_photo" src="https://www.w3schools.com/w3images/team2.jpg" class="img-responsive">
+                        <h1 id="name">Danut</h1>
+                        <p class="title" id="title">CEO & Founder</p>
+                        <p id="company">BGG Security</p>
+                    </div>
+                </div>
+                <!--End Profile Card-->
+                <!--Social Card-->
+                <div class="row">
+                    <div class="card bg-secondary">
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe mr-2 icon-inline"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                            <span id="website">Open website</span>
+                        </div>
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
+                            <span id="linkedin">Go to linkedin</span>
+                        </div>
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook mr-2 icon-inline text-primary"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                            <span id="facebook">Go to Facebook</span>
+                        </div>
+                        <div class="row">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram mr-2 icon-inline text-danger"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                            <span id="instagram">Go to Instagram</span>
+                        </div>
+                    </div>
+                </div>
+                <!--End Social Card-->
+            </div>
+            <!--End Profile & Social Card-->
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                <div class="row">
+                    <div class="card bg-secondary">
+                        <div class="row">
+                            <h5>Phone</h5>
+                            <span id="phone"></span>
+                        </div>
+                        <div class="row">
+                            <h5>Address</h5>
+                            <span id="address"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card bg-secondary">
+                        <div class="row" id="contact_li">
+                            <h3>Contacts</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Details & Company Card-->
+        </div>
+    </div>
+    <!--End Main Content-->
+    <!--Scripts-->
+    <script>
+        //sidebar js
+        function openNav() {
+            document.getElementById("sidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+        function closeNav() {
+            document.getElementById("sidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+    </script>
+    <script src="/assets/javascripts/jquery"></script>
+    <script src="/assets/javascripts/profile"></script>
+</body>
+</html>

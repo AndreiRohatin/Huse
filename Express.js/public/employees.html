@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="RohatinAndrei">
+
+    <title>HUSE Dashboard</title>
+    
+    <!--CSS-->
+    <link rel="stylesheet" href="/assets/css/main">
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet'/>
+    <!--JS-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+</head>
+<body>
+
+    <!--Sidenav-->
+    <div id="sidenav" class="sidenav bg-secondary">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="/Main">Map View</a>
+        <a href="/Profile">Profile</a>
+        <a href="/Clients">Clients</a>
+        <a href="/Employees">Employees</a>
+        <a href="/api/logoutUser">Sign out</a>
+    </div>
+    <span class="txt-accent-primary" style="font-size:40px;cursor:pointer;position:fixed;z-index:1;margin:20px" onclick="openNav()"><strong>&#9776;</strong></span>
+    <!--End Sidenav-->
+
+    <!--Main Content-->
+    <div class="main" id="main">
+        <div id="map"></div>
+    </div>
+    <!--End Main Content-->
+
+    <!--Scripts-->
+    <script>
+       
+        //sidebar js
+        function openNav() {
+            document.getElementById("sidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+        function closeNav() {
+            document.getElementById("sidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+        
+        //initialize mapbox
+
+        mapboxgl.accessToken = 'pk.eyJ1Ijoicm9oYXRpbmFuZHJlaSIsImEiOiJja2RrMjYzZGYwZmEyMnRsNGxiOTBoaDk1In0.uAX35kMrTYz7WQR2xgJpbw';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/rohatinandrei/ckm6v6jl8cogj17lbw2l7fbnq',
+            center: [25.5887, 45.6427],
+            zoom: 10
+        });
+        map.on('load', function () {
+            map.resize();
+        });
+
+        var geojson = {
+            type: 'FeatureCollection',
+            features: [{
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [24.5887, 45.6427]
+                },
+                properties: {
+                    title: 'Mapbox',
+                    description: 'Washington, D.C.'
+                }
+            },
+            {
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [25.5887, 45.6427]
+                },
+                properties: {
+                    title: 'Mapbox',
+                    description: 'San Francisco, California'
+                }
+            }]
+        };
+
+        geojson.features.forEach(function (marker) {
+            // create a HTML element for each feature
+            var el = document.createElement('div');
+            el.className = 'marker';
+            // make a marker for each feature and add to the map
+            new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .addTo(map);
+            new mapboxgl.Marker(el)
+                .setLngLat(marker.geometry.coordinates)
+                .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                    .setHTML('<h3>' + marker.properties.title + '</h3><p>' + marker.properties.description + '</p>'))
+                .addTo(map);
+        });
+    </script>
+    <script src="/assets/javascripts/dashboard"></script>
+</body>
+</html>
